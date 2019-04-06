@@ -10,6 +10,8 @@ fn main() {
     // comment this line out for more fun! ;)
     //println!("The secret number is: {}", secret_number);
 
+    let mut attempts: i8 = 0;
+
     loop {
         let mut guess = String::new();
 
@@ -27,16 +29,20 @@ fn main() {
         println!("Your guess: {}", guess);
 
         match guess.cmp(&secret_number) {
-            Ordering::Less => println!("No.. it's way less ☹️"),
+            Ordering::Less => println!("No.. Your guess is way less than the secret number ☹️"),
             Ordering::Greater => {
-                println!("Nope.. you are going way above the secret number ☹️")
+                println!("Nope.. You are going way above the secret number ☹️")
             }
             Ordering::Equal => {
                 println!("You guessed it right! You won!! 🎉");
                 break;
             }
         }
+
+        attempts = attempts + 1;
     }
+
+    println!("Number of attempts before successful guess: {}", attempts);
 
     println!("~~~~Bye bye~~~~");
 }
